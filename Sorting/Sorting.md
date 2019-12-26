@@ -54,5 +54,5 @@ public class Solution{
 
 
 
-![Merge Sorting](/Users/zhou/Desktop/Travail/Algorithms/Sorting/mergesort.jpeg)
+![Merge Sorting](./mergesort.jpeg)
 
