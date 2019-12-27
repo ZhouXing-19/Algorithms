@@ -56,3 +56,77 @@ public class Solution{
 
 ![Merge Sorting](./mergesort.jpeg)
 
+
+
+## Quick Sort
+
+```C++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int partition(int *A, int start, int end){
+  int partitionIndex = start;
+  int pivot = A[end];
+  for(int i=start;i<end;i++){
+    if(A[i]< pivot){
+      swap(A[i],A[partitionIndex++]);
+    }
+  }
+  swap(A[end],A[partitionIndex]);
+  return partitionIndex;
+}
+
+void QuickSort(int *A, int start, int end){
+  if(start<end && start>=0){
+    int partitionindex = partition(A, start, end);
+    QuickSort(A,start,partitionindex-1);
+    QuickSort(A,partitionindex+1);
+  }
+}
+
+int main(){
+  int A[] = {2,1,9,0,4,7,2,3};
+  QuickSort(A,0,7);
+  for(int i=0;i<9;i++) cout<<A[i]<<" ";
+  return 0;
+}
+```
+
+```python
+def partition(A,start,end):
+  pivot = A[end]
+  partitionIndex = start
+  #partitionIndex 就是如果A[i]比pivot小，扔到前面的哪个位置。
+  #如果最开始几个就是比pivot小，那么i和partitionIndex同时增加，这几个数保持原位置不变。
+  for i in range(start,end):#不是end+1， 不拿pivot和自己比
+    if(A[i]<=pivot):
+      A[i],A[partitionIndex] = A[partitionIndex],A[i]
+      partitionIndex+=1
+  #for循环之后最后的 A[partitionIndex]一定大于pivot，因为所有小于等于的都扔到了它的左边。
+      
+  #把pivot插到中间。
+  A[partitionIndex],A[end] = A[end],A[partitionIndex]
+  return partitionIndex
+
+def QuickSort(A,start,end):
+  if start<end:
+    par = partition(A,start,end)
+    QuickSort(A,start,par-1)
+    QuickSort(A,par+1,end)
+A = [2,1,9,0,4,7,2,3]
+QuickSort(A,0,len(A))
+print(A)
+```
+
+
+
+
+
+
+
+
+
+
+
