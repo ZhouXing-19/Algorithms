@@ -27,6 +27,8 @@ class Solution:
     ## 滚动数组优化方案。 考虑到其实i只考虑后一次，其实可以删去这个维度。
 
     def numDistinct2(self, s, t):
+        lenS = len(s)
+        lenT = len(t)
         dp = [0] * (lenT+1)
         dp[lenT] = 1
         for i in reversed(range(lenS)):
@@ -34,3 +36,4 @@ class Solution:
                 if s[i] == t[j]:
                     dp[j] += dp[j+1]
         #dp 的更新只依赖与j这一个维度，因为本质上是s移动指针，向t看齐。
+
